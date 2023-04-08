@@ -1,0 +1,71 @@
+﻿@model Sensitive_Data_Application.Models.Fellow
+
+@{
+    ViewBag.Title = "Tech Fellows";
+}
+
+@using (Html.BeginForm("PostFellow", "Home", FormMethod.Post))
+{
+    <div class="shadow p-5 mb-5 bg-light bg-opacity-10 bg-gradient rounded-5">
+        <p class="text-secondary">There's always space for one more fellow.</p>
+        <div class="form-group row m-1">
+            @Html.LabelFor(f => f.Name, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(f => f.Name, new { Class = "form-control form-control-lg", PlaceHolder = "Name", @required = "Required" })
+            </div>
+        </div>
+        <div class="form-group row m-1">
+            @Html.LabelFor(f => f.Surname, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(f => f.Surname, new { Class = "form-control form-control-lg", PlaceHolder = "Surname", @required = "Required" })
+            </div>
+        </div>
+        <div class="form-group row m-1">
+            @Html.LabelFor(f => f.CompanyFound, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(f => f.CompanyFound, new { Class = "form-control form-control-lg", PlaceHolder = "Company Founded", @required = "Required" })
+            </div>
+        </div>
+        <br />
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+}
+<div class="current-main">
+    <h3>Here Is The List of Currently Recorded Tech Founders of Recent Years</h3>
+    <div class="table-responsive mb5">
+        <table class="table table-hover">
+            <caption>Tech Fellows</caption>
+            @* First Row of table is the headings row*@
+            @* The Children of the headings row tr.. are all th=table heading *@
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Company Founded</th>
+                <th>Delete?</th>
+                <th>Edit?</th>
+            </tr>
+            @* The rest of the row are normal data rows *@
+            @* Whose children are td=table data elements *@
+            @foreach (var F in ViewBag.Fellows) // We opt to act like we dont know the type..
+            {
+                <tr>
+                    <td>@F.Name</td>
+                    <td>@F.Surname</td>
+                    <td>@F.CompanyFound</td>
+                    <td>
+                        @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Post))
+                        {
+                            <button type="submit" class="btn btn-danger" title="Delete this fellow">Delete</button>
+                        }
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("EditFellow", "Home", new { Id = F.Id }, FormMethod.Post))
+                        {
+                            <button type="submit" class="btn btn-warning" title="Edit this fellow">Edit</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

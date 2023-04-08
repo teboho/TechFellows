@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensitive_Data_Application", "Sensitive_Data_Application.csproj", "{A290D41A-DB70-4CFB-A03F-DA2A6F4FFC85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A290D41A-DB70-4CFB-A03F-DA2A6F4FFC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A290D41A-DB70-4CFB-A03F-DA2A6F4FFC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A290D41A-DB70-4CFB-A03F-DA2A6F4FFC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A290D41A-DB70-4CFB-A03F-DA2A6F4FFC85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16DD073B-8C8A-4280-807E-24F725D87F19}
+	EndGlobalSection
+EndGlobal
