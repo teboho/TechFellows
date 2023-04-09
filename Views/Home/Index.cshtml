@@ -3,6 +3,52 @@
 @{
     ViewBag.Title = "Tech Fellows";
 }
+<button class="btn btn-dark btn-sm" id="scroll-down-button">Scroll Down<br />To Add More</button>
+<div class="current-main">
+    <h3>Here Is The List of Currently Recorded Tech Founders of Recent Years</h3>
+    <div class="table-responsive-sm mb5">
+        <table class="table table-bordered border-primary border-opacity-25 table-hover">
+            <caption>Tech Fellows</caption>
+            @* First Row of table is the headings row*@
+            @* The Children of the headings row tr.. are all th=table heading *@
+            <thead class="bg-gradient bg-info">
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Company Founded</th>
+                    <th>Year Founded</th>
+                    <th>Delete?</th>
+                    <th>Edit?</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* The rest of the row are normal data rows *@
+                @* Whose children are td=table data elements *@
+                @foreach (var F in ViewBag.Fellows) // We opt to act like we dont know the type..
+                {
+                    <tr>
+                        <td>@F.Name</td>
+                        <td>@F.Surname</td>
+                        <td class="table-active">@F.CompanyFound</td>
+                        <td>@F.Year</td>
+                        <td>
+                            @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Post))
+                            {
+                                <button type="submit" class="btn btn-danger" title="Delete this fellow">Delete</button>
+                            }
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("EditFellow", "Home", new { Id = F.Id }, FormMethod.Post))
+                            {
+                                <button type="submit" class="btn btn-warning" title="Edit this fellow">Edit</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @using (Html.BeginForm("PostFellow", "Home", FormMethod.Post, new { ContentType = "application/x-www-form-urlencoded" }))
 {
@@ -36,44 +82,3 @@
         <input type="submit" value="Submit" class="btn btn-primary" />
     </div>
 }
-<div class="current-main">
-    <h3>Here Is The List of Currently Recorded Tech Founders of Recent Years</h3>
-    <div class="table-responsive mb5">
-        <table class="table table-hover">
-            <caption>Tech Fellows</caption>
-            @* First Row of table is the headings row*@
-            @* The Children of the headings row tr.. are all th=table heading *@
-        <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Company Founded</th>
-            <th>Year Founded</th>
-            <th>Delete?</th>
-            <th>Edit?</th>
-        </tr>
-            @* The rest of the row are normal data rows *@
-            @* Whose children are td=table data elements *@
-            @foreach (var F in ViewBag.Fellows) // We opt to act like we dont know the type..
-            {
-                <tr>
-                    <td>@F.Name</td>
-                    <td>@F.Surname</td>
-                    <td>@F.CompanyFound</td>
-                    <td>@F.Year</td>
-                    <td>
-                        @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Post))
-                        {
-                            <button type="submit" class="btn btn-danger" title="Delete this fellow">Delete</button>
-                        }
-                    </td>
-                    <td>
-                        @using (Html.BeginForm("EditFellow", "Home", new { Id = F.Id }, FormMethod.Post))
-                        {
-                            <button type="submit" class="btn btn-warning" title="Edit this fellow">Edit</button>
-                        }
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-</div>

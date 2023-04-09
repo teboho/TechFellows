@@ -6,9 +6,21 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")  
-    <style>
+<style>
+    #scroll-down-button {
+        position: fixed;
+        bottom: 50px;
+        right: 20px;
+        padding: 5px 10px;
+        background-color: #333;
+        opacity: 0.5;
+        color: #FFA559;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-    </style>
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
@@ -40,5 +52,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        var scrollDownButton = document.getElementById("scroll-down-button");
+
+        scrollDownButton.addEventListener("click", function() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+            behavior: "smooth"
+          });
+        });
+    </script>
 </body>
 </html>
