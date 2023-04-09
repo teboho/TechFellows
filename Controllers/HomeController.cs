@@ -8,9 +8,22 @@ using System.Web.Mvc;
 
 namespace Sensitive_Data_Application.Controllers
 {
+
     public class HomeController : Controller
     {
-        FellowDataClassesDataContext db = new FellowDataClassesDataContext();
+        // Get the connection string from ConnectionStrings.config
+        private String connection = System.Configuration.
+                                    ConfigurationManager.
+                                    ConnectionStrings["AzureSQL"].ConnectionString;
+        FellowDataClassesDataContext db;
+        
+        // Make a constructor
+        public HomeController()
+        {
+            // Make a FellowDataContext object
+            db = new FellowDataClassesDataContext(connection);
+        }
+        
         // GET /Home/Index = /Home = / 
         public ActionResult Index()
         {
@@ -28,9 +41,10 @@ namespace Sensitive_Data_Application.Controllers
         /// <returns></returns>
         public ActionResult PostFellow(Fellow fellow)
         {
+            // Make a fellow object
             db.Fellows.InsertOnSubmit(fellow);
 
-            string message = null;
+            string message = "";
 
             try
             {
@@ -116,6 +130,11 @@ namespace Sensitive_Data_Application.Controllers
             if (!f.Surname.Equals(fellow.Surname))
             {
                 f.Surname = fellow.Surname;
+                if (!changed) changed = true;
+            }
+            if (!f.Year.Equals(fellow.Year))
+            {
+                f.Year = fellow.Year;
                 if (!changed) changed = true;
             }
 

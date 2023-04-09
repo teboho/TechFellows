@@ -22,7 +22,7 @@ namespace Sensitive_Data_Application.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="database1")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Tech_Fellows")]
 	public partial class FellowDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -34,12 +34,6 @@ namespace Sensitive_Data_Application.Models
     partial void UpdateFellow(Fellow instance);
     partial void DeleteFellow(Fellow instance);
     #endregion
-		
-		public FellowDataClassesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["AzureSQL"].ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
 		
 		public FellowDataClassesDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -88,7 +82,9 @@ namespace Sensitive_Data_Application.Models
 		
 		private string _CompanyFound;
 		
-		private string _Desccription;
+		private System.Nullable<int> _Year;
+		
+		private string _Description;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -102,8 +98,10 @@ namespace Sensitive_Data_Application.Models
     partial void OnSurnameChanged();
     partial void OnCompanyFoundChanging(string value);
     partial void OnCompanyFoundChanged();
-    partial void OnDesccriptionChanging(string value);
-    partial void OnDesccriptionChanged();
+    partial void OnYearChanging(System.Nullable<int> value);
+    partial void OnYearChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
     #endregion
 		
 		public Fellow()
@@ -191,22 +189,42 @@ namespace Sensitive_Data_Application.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Desccription", DbType="VarChar(MAX)")]
-		public string Desccription
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int")]
+		public System.Nullable<int> Year
 		{
 			get
 			{
-				return this._Desccription;
+				return this._Year;
 			}
 			set
 			{
-				if ((this._Desccription != value))
+				if ((this._Year != value))
 				{
-					this.OnDesccriptionChanging(value);
+					this.OnYearChanging(value);
 					this.SendPropertyChanging();
-					this._Desccription = value;
-					this.SendPropertyChanged("Desccription");
-					this.OnDesccriptionChanged();
+					this._Year = value;
+					this.SendPropertyChanged("Year");
+					this.OnYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
 				}
 			}
 		}

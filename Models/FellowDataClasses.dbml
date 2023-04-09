@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="database1" Class="FellowDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AzureSQL" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Tech_Fellows" Class="FellowDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Table Name="dbo.Fellows" Member="Fellows">
     <Type Name="Fellow">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Surname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CompanyFound" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Desccription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
