@@ -8,7 +8,7 @@
 
 <h2>@ViewBag.Title</h2>
 <div>
-    @using (Html.BeginForm("PostEditedFellow", "Home", new { Id = ViewBag.Id }, FormMethod.Post, new { Class = "shadow p-5 mb-5 bg-warning rounded" }))
+    @using (Html.BeginForm("PostEditedFellow", "Home", new { Id = ViewBag.Id }, FormMethod.Post, new { Class = "shadow p-5 mb-5 bg-light rounded" }))
     {
         <div class="form-group row mb-3">
             @Html.LabelFor(f => f.Name, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
