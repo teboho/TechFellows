@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand text-light text-lg-start fw-bold" href="/">Tech Fellows</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-fill"></i>Home</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -45,7 +45,7 @@
     <div class="container pt-4">
         @RenderBody()
         
-        <footer class="fixed-bottom text-bg-success text-white-50 p-1 text-center">
+        <footer class="fixed-bottom text-bg-secondary text-white-50 p-1 text-center">
             <p>&copy; @DateTime.Now.Year - Tech Fellows</p>
         </footer>
     </div>

@@ -3,22 +3,22 @@
 @{
     ViewBag.Title = "Tech Fellows";
 }
-<button class="btn btn-dark btn-sm" id="scroll-down-button">Scroll Down<br />To Add More</button>
+<button class="btn btn-dark btn-sm" id="scroll-down-button"><i class="bi bi-chevron-double-down"></i></button>
 <div class="current-main">
-    <h3>Here Is The List of Currently Recorded Tech Founders of Recent Years</h3>
+    <h3>The List of Currently Recorded Tech Founders</h3>
     <div class="table-responsive-sm mb5">
         <table class="table table-bordered border-primary border-opacity-25 table-hover">
-            <caption>Tech Fellows</caption>
+            <caption class="text-end">Tech Fellows</caption>
             @* First Row of table is the headings row*@
             @* The Children of the headings row tr.. are all th=table heading *@
-            <thead class="bg-gradient bg-info">
+            <thead class="bg-gradient bg-light">
                 <tr>
                     <th>Name</th>
                     <th>Surname</th>
                     <th>Company Founded</th>
                     <th>Year Founded</th>
-                    <th>Delete?</th>
-                    <th>Edit?</th>
+                    <th><i class="bi bi-person-x"></i>Delete?</th>
+                    <th><i class="bi bi-pencil"></i>Edit?</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
                             @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Get))
                             {
                                 <button type="submit" class="btn btn-danger" title="Delete this fellow">
-                                    <i class="bi bi-trash"></i> Delete
+                                    <i class="bi bi-person-x-fill"></i>
                                 </button>
                             }
                         </td>
@@ -43,7 +43,7 @@
                             @using (Html.BeginForm("EditFellow", "Home", new { Id = F.Id }, FormMethod.Get))
                             {
                                 <button type="submit" class="btn btn-warning" title="Edit this fellow">
-                                    <i class="bi bi-pencil"></i> Edit
+                                    <i class="bi bi-pencil-fill"></i>
                                 </button>
                             }
                         </td>
