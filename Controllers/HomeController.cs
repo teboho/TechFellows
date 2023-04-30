@@ -63,6 +63,7 @@ namespace Sensitive_Data_Application.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult DeleteFellow(int Id)
         {
             var fellow = (from f in db.Fellows
@@ -96,6 +97,7 @@ namespace Sensitive_Data_Application.Controllers
         }
 
         // Home/EditFellow/4
+        [HttpGet]
         public ActionResult EditFellow(int Id)
         {
             // Needs a view with prefilled current content
@@ -111,6 +113,7 @@ namespace Sensitive_Data_Application.Controllers
             // Pass the model to the view
             return View(fellow);
         }
+
 
         public ActionResult PostEditedFellow(Fellow fellow, int Id)
         {

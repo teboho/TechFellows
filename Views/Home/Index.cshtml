@@ -32,15 +32,19 @@
                         <td class="table-active">@F.CompanyFound</td>
                         <td>@F.Year</td>
                         <td>
-                            @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Post))
+                            @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Get))
                             {
-                                <button type="submit" class="btn btn-danger" title="Delete this fellow">Delete</button>
+                                <button type="submit" class="btn btn-danger" title="Delete this fellow">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
                             }
                         </td>
                         <td>
-                            @using (Html.BeginForm("EditFellow", "Home", new { Id = F.Id }, FormMethod.Post))
+                            @using (Html.BeginForm("EditFellow", "Home", new { Id = F.Id }, FormMethod.Get))
                             {
-                                <button type="submit" class="btn btn-warning" title="Edit this fellow">Edit</button>
+                                <button type="submit" class="btn btn-warning" title="Edit this fellow">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
                             }
                         </td>
                     </tr>
@@ -75,10 +79,10 @@
         <div class="form-group row m-1">
             @Html.LabelFor(f => f.Year, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
             <div class="col-sm-10">
-                @Html.TextBoxFor(f => f.Year, new { Type = "number", Class = "form-control form-control-lg", PlaceHolder = "Company Founded", @required = "Required" })
+                @Html.TextBoxFor(f => f.Year, new { Type = "number", Class = "form-control form-control-lg", PlaceHolder = "Which year?", @required = "Required" })
             </div>
         </div>
         <br />
-        <input type="submit" value="Submit" class="btn btn-primary" />
+        <button type="submit" value="Submit" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Submit</button>
     </div>
 }
