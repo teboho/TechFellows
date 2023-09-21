@@ -4,9 +4,51 @@
     ViewBag.Title = "Tech Fellows";
 }
 <button class="btn btn-dark btn-sm" id="scroll-down-button"><i class="bi bi-chevron-double-down"></i></button>
+
+<dialog id="addmore">
+    @using (Html.BeginForm("PostFellow", "Home", FormMethod.Post, new { ContentType = "application/x-www-form-urlencoded" }))
+    {
+        <div class="shadow p-5 mb-5 bg-light bg-opacity-10 bg-gradient rounded-5">
+            <p class="text-secondary">There's always space for one more fellow.</p>
+            <div class="form-group row m-1">
+                @Html.LabelFor(f => f.Name, new { Class = "col-sm-3 col-form-label col-form-label-lg" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(f => f.Name, new { Class = "form-control form-control-lg", PlaceHolder = "Name", @required = "Required" })
+                </div>
+            </div>
+            <div class="form-group row m-1">
+                @Html.LabelFor(f => f.Surname, new { Class = "col-sm-3 col-form-label col-form-label-lg" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(f => f.Surname, new { Class = "form-control form-control-lg", PlaceHolder = "Surname", @required = "Required" })
+                </div>
+            </div>
+            <div class="form-group row m-1">
+                @Html.LabelFor(f => f.CompanyFound, new { Class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(f => f.CompanyFound, new { Class = "form-control", PlaceHolder = "Company Founded", @required = "Required" })
+                </div>
+            </div>
+            <div class="form-group row m-1">
+                @Html.LabelFor(f => f.Year, new { Class = "col-sm-3 col-form-label col-form-label-lg" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(f => f.Year, new { Type = "number", Class = "form-control form-control-lg", PlaceHolder = "Which year?", @required = "Required" })
+                </div>
+            </div>
+            <br />
+            <button type="submit" value="Submit" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Submit</button>
+        </div>
+    }
+    <button class="btn btn-warning" id="btnClose">Close</button>
+</dialog>
+
 <div class="current-main">
     <h3>List of Currently Recorded Tech Founders</h3>
-    <div class="table-responsive-sm mb5">
+    <div class="row mb-2">
+        <div class="col-3">
+            <button class="btn btn-primary" id="btnAdd">Add 1 More</button>
+        </div>
+    </div>
+    <div class="table-responsive-sm mb-5">
         <table class="table table-bordered border-primary border-opacity-25 table-hover">
             <caption class="text-end">Tech Fellows</caption>
             @* First Row of table is the headings row*@
@@ -31,10 +73,10 @@
                         <td>@F.Surname</td>
                         <td class="table-active">@F.CompanyFound</td>
                         <td>@F.Year</td>
-                        <td>
+                        <td title="this has been disabled due to abuse..">
                             @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Get))
                             {
-                                <button type="submit" class="btn btn-danger" title="Delete this fellow">
+                                <button type="submit" class="btn btn-danger" title="Delete this fellow" disabled>
                                     <i class="bi bi-person-x-fill"></i>
                                 </button>
                             }
@@ -54,35 +96,14 @@
     </div>
 </div>
 
-@using (Html.BeginForm("PostFellow", "Home", FormMethod.Post, new { ContentType = "application/x-www-form-urlencoded" }))
-{
-    <div class="shadow p-5 mb-5 bg-light bg-opacity-10 bg-gradient rounded-5">
-        <p class="text-secondary">There's always space for one more fellow.</p>
-        <div class="form-group row m-1">
-            @Html.LabelFor(f => f.Name, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
-            <div class="col-sm-10">
-                @Html.TextBoxFor(f => f.Name, new { Class = "form-control form-control-lg", PlaceHolder = "Name", @required = "Required" })
-            </div>
-        </div>
-        <div class="form-group row m-1">
-            @Html.LabelFor(f => f.Surname, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
-            <div class="col-sm-10">
-                @Html.TextBoxFor(f => f.Surname, new { Class = "form-control form-control-lg", PlaceHolder = "Surname", @required = "Required" })
-            </div>
-        </div>
-        <div class="form-group row m-1">
-            @Html.LabelFor(f => f.CompanyFound, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
-            <div class="col-sm-10">
-                @Html.TextBoxFor(f => f.CompanyFound, new { Class = "form-control form-control-lg", PlaceHolder = "Company Founded", @required = "Required" })
-            </div>
-        </div>
-        <div class="form-group row m-1">
-            @Html.LabelFor(f => f.Year, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
-            <div class="col-sm-10">
-                @Html.TextBoxFor(f => f.Year, new { Type = "number", Class = "form-control form-control-lg", PlaceHolder = "Which year?", @required = "Required" })
-            </div>
-        </div>
-        <br />
-        <button type="submit" value="Submit" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Submit</button>
-    </div>
-}
+<script>
+    const addmore = document.getElementById("addmore");
+    const btnAdd = document.getElementById("btnAdd");
+    btnAdd.onclick = (event) => {
+        addmore.showModal();
+    }
+    const btnClose = document.getElementById("btnClose");
+    btnClose.onclick = (event) => {
+        addmore.close();
+    }
+</script>
