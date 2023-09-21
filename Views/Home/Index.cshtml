@@ -59,6 +59,7 @@
                     <th>Surname</th>
                     <th>Company Founded</th>
                     <th>Year Founded</th>
+                    <th>Description</th>
                     <th><i class="bi bi-person-x"></i>Delete?</th>
                     <th><i class="bi bi-pencil"></i>Edit?</th>
                 </tr>
@@ -73,6 +74,7 @@
                         <td>@F.Surname</td>
                         <td class="table-active">@F.CompanyFound</td>
                         <td>@F.Year</td>
+                        <td>@F.Description</td>
                         <td title="this has been disabled due to abuse..">
                             @using (Html.BeginForm("DeleteFellow", "Home", new { Id = F.Id }, FormMethod.Get))
                             {
