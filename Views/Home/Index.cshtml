@@ -3,12 +3,20 @@
 @{
     ViewBag.Title = "Tech Fellows";
 }
+
+<style>
+    dialog {
+        border: none !important;
+        background: local;
+    }
+</style>
+
 <button class="btn btn-dark btn-sm" id="scroll-down-button"><i class="bi bi-chevron-double-down"></i></button>
 
 <dialog id="addmore">
-    @using (Html.BeginForm("PostFellow", "Home", FormMethod.Post, new { ContentType = "application/x-www-form-urlencoded" }))
+    @using (Html.BeginForm("PostFellow", "Home", FormMethod.Post, new { ContentType = "application/x-www-form-urlencoded", Class = "bg-light rounded-5" }))
     {
-        <div class="shadow p-5 mb-5 bg-light bg-opacity-10 bg-gradient rounded-5">
+        <div class="shadow p-5 bg-light bg-opacity-10 bg-gradient rounded-5">
             <p class="text-secondary">There's always space for one more fellow.</p>
             <div class="form-group row m-1">
                 @Html.LabelFor(f => f.Name, new { Class = "col-sm-3 col-form-label col-form-label-lg" })
@@ -23,9 +31,9 @@
                 </div>
             </div>
             <div class="form-group row m-1">
-                @Html.LabelFor(f => f.CompanyFound, new { Class = "col-sm-3 col-form-label" })
+                <label for="CompanyFound" class="col-sm-3 col-form-label-lg">Company</label>
                 <div class="col-sm-9">
-                    @Html.TextBoxFor(f => f.CompanyFound, new { Class = "form-control", PlaceHolder = "Company Founded", @required = "Required" })
+                    @Html.TextBoxFor(f => f.CompanyFound, new { Class = "form-control form-control-lg", PlaceHolder = "Company Founded", @required = "Required" })
                 </div>
             </div>
             <div class="form-group row m-1">
@@ -34,11 +42,10 @@
                     @Html.TextBoxFor(f => f.Year, new { Type = "number", Class = "form-control form-control-lg", PlaceHolder = "Which year?", @required = "Required" })
                 </div>
             </div>
-            <br />
             <button type="submit" value="Submit" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Submit</button>
         </div>
     }
-    <button class="btn btn-warning" id="btnClose">Close</button>
+    <button class="btn btn-warning float-end" id="btnClose">Close</button>
 </dialog>
 
 <div class="current-main">
