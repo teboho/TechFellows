@@ -8,6 +8,8 @@
     @* For bootstrap-icons *@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery-3.7.1.js")
+    @Scripts.Render("~/bundles/bootstrap")
     <style>
         #scroll-down-button {
             position: fixed;
@@ -21,9 +23,10 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         th {
             position: sticky;
-            top: 20px; 
+            top: 20px;
         }
     </style>
 </head>
@@ -48,23 +51,21 @@
     </nav>
     <div class="container pt-4">
         @RenderBody()
-        
+
         <footer class="fixed-bottom bg-light text-black-50 p-1 text-center">
             <p>&copy; @DateTime.Now.Year - Tech Fellows</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
         var scrollDownButton = document.getElementById("scroll-down-button");
 
-        scrollDownButton.addEventListener("click", function() {
+        scrollDownButton.addEventListener("click", function () {
             window.scrollTo({
                 top: document.body.scrollHeight,
-            behavior: "smooth"
-          });
+                behavior: "smooth"
+            });
         });
     </script>
 </body>

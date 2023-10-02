@@ -144,7 +144,13 @@ namespace Sensitive_Data_Application.Controllers
             if (f.CompanyFound == null || !f.CompanyFound.Equals(fellow.CompanyFound))
             {
                 f.CompanyFound = fellow.CompanyFound;
-                if (!changed) changed=true;
+                if (!changed) changed = true;
+            }
+
+            if (f.Description == null || !f.Description.Equals(fellow.Description))
+            {
+                f.Description = fellow.Description;
+                if (!changed) changed = true;
             }
 
             if (!changed)
@@ -159,7 +165,7 @@ namespace Sensitive_Data_Application.Controllers
             }
 
 
-            message = string.Format("Changed fellow information to {0} {1}, founded {2}.", f.Name, f.Surname, f.CompanyFound);
+            message = string.Format("Modified fellow information to {0} {1}, founded {2} and description [{3}].", f.Name, f.Surname, f.CompanyFound, f.Description);
 
             ViewBag.Message = message;
             ViewBag.ChangeType = "Editing A Fellow";

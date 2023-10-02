@@ -11,7 +11,7 @@
     }
 </style>
 
-<button class="btn btn-dark btn-sm" id="scroll-down-button"><i class="bi bi-chevron-double-down"></i></button>
+<button class="btn btn-dark btn-sm" id="scroll-down-button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Wanna add another fellow?"><i class="bi bi-chevron-double-down"></i></button>
 
 <dialog id="addmore">
     @using (Html.BeginForm("PostFellow", "Home", FormMethod.Post, new { ContentType = "application/x-www-form-urlencoded", Class = "bg-light rounded-5" }))
@@ -36,6 +36,12 @@
                     @Html.TextBoxFor(f => f.CompanyFound, new { Class = "form-control form-control-lg", PlaceHolder = "Company Founded", @required = "Required" })
                 </div>
             </div>
+            <div class="form-group row mb-3">
+                @Html.LabelFor(f => f.Description, new { Class = "col-sm-3 col-form-label" })
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(f => f.Description, new { Class = "form-control form-control-lg", PlaceHolder = "Description", @required = "Required", Rows = "3" })
+                </div>
+            </div>
             <div class="form-group row m-1">
                 @Html.LabelFor(f => f.Year, new { Class = "col-sm-3 col-form-label col-form-label-lg" })
                 <div class="col-sm-9">
@@ -45,7 +51,7 @@
             <button type="submit" value="Submit" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Submit</button>
         </div>
     }
-    <button class="btn btn-warning float-end" id="btnClose">Close</button>
+    <button class="btn btn-warning float-end" id="btnClose" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Close">Close</button>
 </dialog>
 
 <div class="current-main">
@@ -104,7 +110,6 @@
         </table>
     </div>
 </div>
-
 <script>
     const addmore = document.getElementById("addmore");
     const btnAdd = document.getElementById("btnAdd");

@@ -29,9 +29,15 @@
             </div>
         </div>
         <div class="form-group row mb-3">
+            @Html.LabelFor(f => f.Description, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
+            <div class="col-sm-10">
+                @Html.TextAreaFor(f => f.Description, new { Class = "form-control form-control-lg text", PlaceHolder = "Description", Value = Model.Description, @required = "Required" })
+            </div>
+        </div>
+        <div class="form-group row mb-3">
             @Html.LabelFor(f => f.Year, new { Class = "col-sm-2 col-form-label col-form-label-lg" })
             <div class="col-sm-10">
-                @Html.TextBoxFor(f => f.Year, new { Type = "number", Class = "form-control form-control-lg", PlaceHolder = "Company Founded", Value = Model.Year, @required = "Required" })
+                @Html.TextBoxFor(f => f.Year, new { Type = "number", Class = "form-control form-control-lg", PlaceHolder = "Company Founded", Value = Model.Year, @required = "Required", rows = "3" })
             </div>
         </div>
         <input type="submit" value="Save" class="btn btn-success" />
